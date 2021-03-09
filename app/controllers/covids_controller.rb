@@ -2,7 +2,8 @@ class CovidsController < ApplicationController
   def index
     response= RestClient.get("https://api.covidtracking.com/v1/states/current.json")
     result = JSON.parse(response)
-    render json: result
+    api_states = result["states"]
+    render json: api_states
   end
 
   def show
